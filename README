@@ -1,0 +1,15 @@
+Based originally on sun3_beaksoft.ps but improved quite a lot
+
+At the top of the PostScript file you can change page size and strapline 
+text, as well as grid spacing.
+
+render with GhostScript:
+./bin/gs -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -r1200 -sOutputFile=mousepad.pdf sun3_beaksoft.ps 
+
+print it with:
+lp -d EPSON_WF_3620_Series -o cupsPrintQuality=High mousepad.pdf
+
+Remember to let the ink dry or it smudge!
+
+Enjoy
+

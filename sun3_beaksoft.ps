@@ -1,0 +1,61 @@
+%!PS-Adobe-2.0
+%% Sun 3 mouse pad
+%% Copyright 1987, BeakSoft Inc.
+%% All Rights Reserved
+%% Permission is granted to copy and use this without charge as long
+%% as the copyright notices remain intact.
+%%
+%% Adam Billyard: Added some parameters to simplify adjusting
+%% Adam Billyard: Uses A4 page dimensions
+%% Adam Billyard: print message in reverse so its legible when transparency if turned over
+
+/cm_to_dot { 2.54 div 72 mul} def
+/dot_to_inch {72 div} def
+
+%% origin lower left corner of A4 page of 21cm x 29.7cm
+/width 21 cm_to_dot def
+/height 29.7 cm_to_dot def
+
+<< /PageSize [width height] >> setpagedevice
+
+%% some margin
+3 3 translate
+/width width 6 sub def
+/height height 6 sub def
+
+%% grid spacing for Sun optical mouse
+/spacing 72 25 div def
+%% line thickness
+0.25 setlinewidth
+
+/rshow {
+	dup
+	stringwidth pop
+	height dot_to_inch
+	exch sub 0.0 moveto
+	show
+} def
+
+gsave
+0 0 moveto 1 0 0 setrgbcolor
+width spacing div cvi { spacing 0 rmoveto gsave 0 height rlineto stroke grestore } repeat
+0 0 moveto 0 0 1 setrgbcolor
+height spacing div cvi { 0 spacing rmoveto gsave width 0 rlineto stroke grestore } repeat
+grestore
+
+gsave
+-72 72 scale
+-90 rotate
+0.0 0.1 translate
+height neg dot_to_inch width neg dot_to_inch translate
+/Times-Roman findfont 0.25 scalefont setfont
+0.1 0.0 moveto (PostScript Mouse Pad) show
+(Version 1.1.0 ) rshow
+grestore
+
+gsave
+4.0 setlinewidth
+newpath 0 0 moveto width 0 lineto width height lineto 0 height lineto closepath stroke
+grestore
+
+showpage
